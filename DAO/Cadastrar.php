@@ -12,9 +12,8 @@
         public function CadastrarUsuario(Conexao $conexao, String $nome, String $Email, String $Senha, String $tipo, DateTime $dataCadastro,int $curtida,int $contarUsuario){
             try{
                 $conn = $conexao -> conectar(); // ABRE CONEXAO
-                $sql="insert into AstroBlog (codigo,nome,email,senha,tipo,dataCadastro,curtida,contarUsuario)
-                values('','$nome','$Email','$Senha','$tipo','$dataCadastro','$curtida','$contarUsuario')";
-                
+                $sql="insert into Usuario(idUsuario,nome,email,senha,tipo,dataCadastro,curtida,contarUsuario)
+                        values('','$nome','$Email','$Senha','$tipo','".$dataCadastro->format('Y-m-d')."','$curtida','$contarUsuario')";                
                 $resultado = mysqli_query($conn,$sql);
 
                 if($resultado){
@@ -25,6 +24,30 @@
                 echo "<br><br> Impossível Cadastrar o Usuário!<br><br> $erro";
             } // FIM DO TRY E KAT
         } // FIM DA CLASSE CADATRARUSUARIO
+
+        // VALIDAR SE EMAIL JA EXISTE
+        
+        public function ValidarEmail(Conexao $conexao,string $Email){
+        try
+        {
+            $conn=$conexao-> conectar();// abre a conexao 
+            $sql="select email from Usuario where email= '$Email'"; // ALTER TABLE NO USUARIO PARA
+            $resultado=mysqli_query($conn,$sql);
+
+             while($dados = mysqli_fetch_array($resultado))
+             { 
+                    if($dados['email'] == $Email)
+                    {
+                        return $dados['email'] ;
+                    }// fim do if 
+             }// fim do WHILE 
+        }// fim do try 
+        catch(Exception $erro)
+        {
+            echo" Algo deu errado <br> <br> $erro";
+        }
+    }// Fim do CONSULTAR TIPO
+
 
         public function contarUsuario(Conexao $conexao){
             $conn = $conexao->conectar(); // ABRE CONEXAO
@@ -80,7 +103,7 @@
 ####################################################################################
         public function cadastrarEvento(Conexao $conexao, String $nomeEvento, String $categoria, string $dataEvento, string $descricaoEvento){
                 $conn = $conexao -> conectar(); // ABRE CONEXAO
-                $sql="insert into EventoAstronomico (idEventoAstronomico,nomeEvento,categoria,dataEvento,descricaoEvento)
+                $sql="insert into EventoAstronomico(idEventoAstronomico,nomeEvento,categoria,dataEvento,descricao)
                 values('','$nomeEvento','$categoria','$dataEvento','$descricaoEvento')";
                 
                 $resultado = mysqli_query($conn,$sql);
@@ -93,13 +116,13 @@
         } // FIM  DO CADASTRAR EVENTO
 ####################################################################################
         public function cadastrarObservacao(Conexao $conexao, String $titulo, String $categoria, String $objetoObservado, DateTime $dataObservacao,String $codicaoClimatica, String $descricao,
-        String $imagem, int $contarObservacao,int $EventosAstronomicosId, int $EquipamentoId, int $UsuarioId,int $localId){
+        String $imagem, int $contarObservacao, int $EquipamentoId, int $UsuarioId,int $localId){
             try{
                 $conn = $conexao -> conectar(); // ABRE CONEXAO
                 $sql="insert into AstroBlog (codigo,titulo,categoria,objetoObservado,dataObservacao,condicaoClimatica,descricao,imagem,contarObservacao,EventosAstronomicosId,
-                EquipamentoId,UsuarioId,localId)
+                EquipamentoId,localId)
                 values('','$titulo','$categoria','$objetoObservado','$dataObservacao','$codicaoClimatica','$descricao'
-                '$imagem',,'$contarObservacao''$EventosAstronomicosId','$EquipamentoId','$UsuarioId','$localId')";
+                '$imagem','$contarObservacao','$EquipamentoId','$localId')";
                 
                 $resultado = mysqli_query($conn,$sql);
 

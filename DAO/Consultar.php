@@ -8,7 +8,7 @@ use mysqli;
 
 class Consultar
 {
-  function consultarUsuario(conexao $conexao,int $codigo)
+  function consultarUsuarioEspecifico(conexao $conexao,int $codigo)
   {
      try
      {
@@ -60,22 +60,21 @@ class Consultar
         }
     }// Fim do CONSULTAR TIPO
 
-function ConsultarNomeUsuario(conexao $conexao,int $codigo)
+    function ConsultarSenha(conexao $conexao,String $Senha)
     {
         try
         {
             $conn=$conexao-> conectar();// abre a conexao 
-            $sql="select nome from Usuario where codigo= '$codigo'";
-            $result=mysqli_query($conn,$sql);
+            $sql="select senha from Usuario where senha= '$Senha'"; // ALTER TABLE NO USUARIO PARA
+            $resultado=mysqli_query($conn,$sql);
 
-             while(($dados = mysqli_fetch_array($result)))
-                { 
-                    if($dados['codigo']== $codigo)
-                        {
-                           return $dados['nome'];
-
-                        }// fim do if 
-                }// fim do WHILE 
+             while($dados = mysqli_fetch_array($resultado))
+             { 
+                    if($dados['senha'] == $Senha)
+                    {
+                        return $dados['senha'] ;
+                    }// fim do if 
+             }// fim do WHILE 
         }// fim do try 
         catch(Exception $erro)
         {
@@ -83,22 +82,21 @@ function ConsultarNomeUsuario(conexao $conexao,int $codigo)
         }
     }// Fim do CONSULTAR TIPO
 
-    function ConsultarSenha(conexao $conexao,int $codigo)
+function ConsultarUsuario(conexao $conexao,String $Usuario)
     {
         try
         {
             $conn=$conexao-> conectar();// abre a conexao 
-            $sql="select senha from Usuario where codigo= '$codigo'"; // ALTER TABLE NO USUARIO PARA
-            $result=mysqli_query($conn,$sql);
+            $sql="select nome from Usuario where nome= '$Usuario'"; // ALTER TABLE NO USUARIO PARA
+            $resultado=mysqli_query($conn,$sql);
 
-             while($dados = mysqli_fetch_array($result))
-                { 
-                    if($dados['codigo']== $codigo)
-                        {
-                           return $dados['senha'];
-
-                        }// fim do if 
-                }// fim do WHILE 
+             while($dados = mysqli_fetch_array($resultado))
+             { 
+                    if($dados['nome'] == $Usuario)
+                    {
+                        return $dados['nome'] ;
+                    }// fim do if 
+             }// fim do WHILE 
         }// fim do try 
         catch(Exception $erro)
         {
