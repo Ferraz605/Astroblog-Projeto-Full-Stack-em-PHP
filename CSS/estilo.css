@@ -1,0 +1,142 @@
+/* Gradiente da Logo */
+.titulo-gradiente {
+    font-weight: bold !important;
+    background: linear-gradient(to right, #C4B5FD, #8B5CF6) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+}
+
+/* Fundo do site inteiro */
+body {
+    background-color: #0A0918 !important; 
+    color: #ffffff !important;
+}
+
+/* Nossa Navbar Customizada */
+.navbar-custom {
+    background-color: #100d1e !important;
+    border-bottom: 2px solid #272062 !important; 
+}
+
+/* Linha vertical separando as postagens das curiosidades */
+.borda-vertical {
+    border-left: 2px solid #272062;
+    padding-left: 20px;
+}
+
+/* --- RESPONSIVIDADE DO CONTEÚDO --- */
+.conteudo-blog {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+@media (min-width: 992px) {
+    .conteudo-blog {
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+}
+
+/* --- BOTÕES DE FILTRO CUSTOMIZADOS --- */
+
+/* Botão Selecionado (Ativo) */
+.btn-filtro-ativo {
+    background-color: #A78BFA !important;
+    border: 2px solid #A78BFA !important;
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+.btn-filtro-ativo:hover, 
+.btn-filtro-ativo:focus, 
+.btn-filtro-ativo:active {
+    background-color: #8B5CF6 !important;
+    border-color: #8B5CF6 !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+}
+
+/* Botão Não Selecionado (Outline) */
+.btn-filtro-outline {
+    background-color: transparent !important;
+    border: 2px solid #A78BFA !important;
+    color: #A78BFA !important;
+    font-weight: 600;
+}
+
+.btn-filtro-outline:hover, 
+.btn-filtro-outline:focus {
+    background-color: rgba(167, 139, 250, 0.15) !important;
+    border-color: #A78BFA !important;
+    color: #A78BFA !important;
+    box-shadow: none !important;
+}
+
+/* --- TELA DE LOGIN --- */
+
+/* Imagem do Observatório na esquerda */
+.login-bg-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+/* Painel escuro da direita */
+.login-panel {
+    background-color: #070612 !important;
+    min-height: 100vh;
+}
+
+/* Linha divisória abaixo do slogan */
+.linha-divisora-login {
+    border-top: 1px solid #272062 !important;
+    opacity: 0.8;
+}
+
+/* Campos de entrada (Inputs) com borda roxa */
+.input-login {
+    background-color: #0b091c !important;
+    border: 1px solid #3c2a78 !important;
+    color: #ffffff !important;
+    padding: 10px 14px;
+    border-radius: 4px;
+}
+
+.input-login::placeholder {
+    color: #5d5685 !important;
+}
+
+.input-login:focus {
+    border-color: #A78BFA !important;
+    box-shadow: 0 0 8px rgba(167, 139, 250, 0.3) !important;
+}
+
+/* Botão de Entrar */
+.btn-entrar {
+    background-color: transparent !important;
+    border: 1px solid #4f36a8 !important;
+    color: #ffffff !important;
+    padding: 10px;
+    font-size: 1.05rem;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-entrar:hover {
+    background-color: #4f36a8 !important;
+    border-color: #4f36a8 !important;
+    color: #ffffff !important;
+}
+
+/* Link de cadastro */
+.link-cadastro {
+    color: #8c85b5 !important;
+    transition: color 0.2s ease;
+}
+
+.link-cadastro:hover {
+    color: #A78BFA !important;
+}
